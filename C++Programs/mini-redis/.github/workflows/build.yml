@@ -1,34 +1,37 @@
 name: Build and Test
 
 on:
-push:
-branches:
-- main
-- master
+  push:
+    branches:
+      - main
+      - master
 
-pull_request:
-branches:
-- main
-- master
+  pull_request:
+    branches:
+      - main
+      - master
 
 jobs:
-build:
-runs-on: ubuntu-latest
+  build:
+    runs-on: ubuntu-latest
 
-steps:
-  - name: Checkout repository
-    uses: actions/checkout@v4
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-  - name: Install CMake
-    run: |
-      sudo apt-get update
-      sudo apt-get install -y cmake
+      - name: Install CMake
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y cmake
 
-  - name: Configure CMake
-    run: cmake -S . -B build
+      - name: Configure CMake
+        working-directory: C++Programs/mini-redis
+        run: cmake -S . -B build
 
-  - name: Build project
-    run: cmake --build build
+      - name: Build project
+        working-directory: C++Programs/mini-redis
+        run: cmake --build build
 
-  - name: Run tests
-    run: ./build/mini-redis
+      - name: Run tests
+        working-directory: C++Programs/mini-redis
+        run: ./build/mini-redis
