@@ -18,3 +18,20 @@ target_include_directories(mini-redis
 PRIVATE
 ${PROJECT_SOURCE_DIR}/include
 )
+
+add_executable(database_test
+tests/database_test.cpp
+src/database.cpp
+)
+
+target_include_directories(database_test
+PRIVATE
+${PROJECT_SOURCE_DIR}/include
+)
+
+enable_testing()
+
+add_test(
+    Name database_test
+    COMMAND database_test
+)

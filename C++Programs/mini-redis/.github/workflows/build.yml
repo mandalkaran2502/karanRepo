@@ -34,4 +34,4 @@ jobs:
 
       - name: Run tests
         working-directory: C++Programs/mini-redis
-        run: ./build/mini-redis
+        run: cmake --tests-dir build --output-on-failure
