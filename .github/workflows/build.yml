@@ -33,5 +33,6 @@ jobs:
         run: cmake --build build
 
       - name: Run tests
-        working-directory: C++Programs/mini-redis
-        run: ctest --output-on-failure
+        run: |
+          cd C++Programs/mini-redis/build
+          ctest --output-on-failure
