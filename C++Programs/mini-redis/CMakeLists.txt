@@ -32,6 +32,6 @@ ${PROJECT_SOURCE_DIR}/include
 enable_testing()
 
 add_test(
-    Name database_test
+    NAME database_test
     COMMAND database_test
 )
