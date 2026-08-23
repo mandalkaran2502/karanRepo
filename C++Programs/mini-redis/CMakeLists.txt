@@ -9,18 +9,30 @@ set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
+#--------------------------
+# Database Library
+#--------------------------
+
+add_library(database
+    src/database.cpp
+)
+
+target_include_directories(database
+    PUBLIC
+        ${PROJECT_SOURCE_DIR}/include
+)
+
 # -------------------------
 # Main application
 # -------------------------
 
 add_executable(mini-redis
     src/main.cpp
-    src/database.cpp
 )
 
-target_include_directories(mini-redis
+target_link_libraries(mini-redis
     PRIVATE
-        ${PROJECT_SOURCE_DIR}/include
+        database
 )
 
 # -------------------------
@@ -31,12 +43,11 @@ enable_testing()
 
 add_executable(database_test
     tests/database_test.cpp
-    src/database.cpp
 )
 
-target_include_directories(database_test
+target_link_libraries(database_test
     PRIVATE
-        ${PROJECT_SOURCE_DIR}/include
+        database
 )
 
 add_test(
