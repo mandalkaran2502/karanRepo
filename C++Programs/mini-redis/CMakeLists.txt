@@ -28,6 +28,7 @@ target_include_directories(database
 
 add_executable(mini-redis
     src/main.cpp
+    src/command_handler.cpp
 )
 
 target_link_libraries(mini-redis
@@ -53,4 +54,19 @@ target_link_libraries(database_test
 add_test(
     NAME database_test
     COMMAND database_test
+)
+
+add_executable(command_handler_test
+    tests/command_handler_test.cpp
+    src/command_handler.cpp
+)
+
+target_link_libraries(command_handler_test
+    PRIVATE
+        database
+)
+
+add_test(
+    NAME command_handler_test
+    COMMAND command_handler_test
 )

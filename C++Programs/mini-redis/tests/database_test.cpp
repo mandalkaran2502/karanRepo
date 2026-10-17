@@ -1,12 +1,12 @@
 #include <cassert>
-#include<iostream>
+#include <iostream>
 
 #include "database.h"
 
 int main()
 {
     Database db;
-
+    
     // 1. SET new key
     db.set("name", "Karan");
 
